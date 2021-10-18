@@ -18,3 +18,25 @@ Ways to access the API:
 * Postman
 * curl
 * Script (bash/python/js)
+
+#### Examples
+
+[/psa-controller/predict](http://photostyleanalysis.ddns.net/psa-controller/predict) (*given an image, try and predict its main subject*):
+
+* **via Swagger:**
+
+![alt text](https://i.imgur.com/DrzHENN.png)
+
+* **via Postman:**
+
+![alt text](https://i.imgur.com/WkGvYIc.png)
+
+* **via curl:**
+
+*curl -X POST http://<!--This is a comment-->photostyleanalysis.ddns.net/<!--This is a comment-->psa-controller/predict -F "file=@/path/to/image"*
+
+![alt text](https://i.imgur.com/J1fof8w.png)
+
+* **via Python Script:** 
+
+[example](https://github.com/mzouros/MSc_AI_thesis/blob/main/postReq.py)
