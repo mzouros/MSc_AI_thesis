@@ -29,17 +29,26 @@ Ways to access the API:
 
 * **via Swagger:**
 
-![alt text](https://i.imgur.com/DrzHENN.png)
+  * **Authorization:**
+![alt text](https://i.imgur.com/Dvu0ld5.png)
+![alt text](https://i.imgur.com/Y4u2kij.png)
+
+  * **Execute:**
+![alt text](https://i.imgur.com/nfImlFs.png)
 
 * **via Postman:**
 
-![alt text](https://i.imgur.com/WkGvYIc.png)
+  * **Body:**
+![alt text](https://i.imgur.com/PxGVSwk.png)
+
+  * **Authorization:**
+![alt text](https://i.imgur.com/txXeZR1.png)
 
 * **via curl:**
 
-*curl -X POST http://<!--This is a comment-->photostyleanalysis.ddns.net/<!--This is a comment-->psa-controller/predict -F "file=@/path/to/image"*
+*curl -X POST http://<!--This is a comment-->photostyleanalysis.ddns.net/<!--This is a comment-->psa-controller/predict -H "X-API-KEY:***********" -F "file=@/path/to/image"*
 
-![alt text](https://i.imgur.com/J1fof8w.png)
+![alt text](https://i.imgur.com/2qc4LGg.png)
 
 * **via Python Script:** 
 
