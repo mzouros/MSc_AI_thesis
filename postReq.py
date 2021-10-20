@@ -1,5 +1,5 @@
 import requests
 import json
 
-resp = requests.post("http://photostyleanalysis.ddns.net/psa-controller/predict", files = {"file": open('/path/to/image', 'rb')})
+resp = requests.post("http://photostyleanalysis.ddns.net/psa-controller/predict", headers={'X-API-KEY':'**********'}, files = {"file": open('/home/mike/Artificial Intelligence MSc/3rd Semester/Thesis/cat.jpg', 'rb')})
 print(resp.json())
