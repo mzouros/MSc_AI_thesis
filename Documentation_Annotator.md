@@ -34,7 +34,7 @@ In photography, **toning** is a method of changing the color of B&W photographs.
 For example, Sepia is considered a form of B&W Photography with different tone.
 
 **2. Color Palette (required - 1+):**
-The **dominant** (strongest) color in the image.
+The **dominant-s** (strongest-s) color-s in the image.
 
 **3. Depth of Field (DoF) (required - 1):**
 The distance between the nearest and the farthest objects that are in acceptably sharp focus in an image.
@@ -49,3 +49,63 @@ In short, what is captured in the photo (what its main subject is).
 
 
 #### Examples:
+
+![alt text](https://i.imgur.com/8eiQXp8.jpg)
+
+**1. Color:** B&W
+
+**2. Color Palette:** Black
+
+**3. Depth of Field (DoF):** Shallow
+
+**4. Composition/Technique:** Centered
+
+**5. Type:** Portrait
+
+![alt text](https://i.imgur.com/6vtIT0E.jpg)
+
+**1. Color:** Colorful
+
+**2. Color Palette:** Green
+
+**3. Depth of Field (DoF):** Shallow
+
+**4. Composition/Technique:** Rule of Thirds
+
+**5. Type:** Wildlife
+
+![alt text](https://i.imgur.com/KzipdHc.jpg)
+
+**1. Color:** Colorful
+
+**2. Color Palette:** Black
+
+**3. Depth of Field (DoF):** Deep
+
+**4. Composition/Technique:** Undefined
+
+**5. Type:** Event, Night
+
+![alt text](https://i.imgur.com/hoGGJsW.jpg)
+
+**1. Color:** Colorful
+
+**2. Color Palette:** Blue
+
+**3. Depth of Field (DoF):** Shallow
+
+**4. Composition/Technique:** Centered, Diagonals & Triangles
+
+**5. Type:** Landscape
+
+![alt text](https://i.imgur.com/m7yLX4n.jpg)
+
+**1. Color:** B&W
+
+**2. Color Palette:** Black, White (you could also choose Gray, cause a B&W photograph is not pure black and white, but more like Grayscale)
+
+**3. Depth of Field (DoF):** Shallow
+
+**4. Composition/Technique:** Frame within Frame
+
+**5. Type:** Street
