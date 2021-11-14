@@ -2,9 +2,9 @@
   <img src="https://i.imgur.com/68Juvpa.png"/>
 </p>
 
-### Annotator Documentation - [http://psa-annotator.ddns.net](http://psa-annotator.ddns.net)
+## Annotator Documentation - [http://psa-annotator.ddns.net](http://psa-annotator.ddns.net)
 
-#### Important Notes:
+### Important Notes:
 * **Label Studio Free Edition does not provide multiple annotations per task (by one or more Collaborators). The workaround of this limitation is to annotate each image (task) by creating a new labeling instance ('+' button) according to the guidline below.**
 
 * **Label Studio Free Edition does not provide Roles (eg. owners, admins, annotators, reviewers). Please limit yourselves in labeling the images (tasks).**
@@ -26,7 +26,7 @@
 ![alt text](https://i.imgur.com/lnPdvWb.png)
 
 
-#### Tasks Guideline:
+### Tasks Guideline:
 
 **1. Color (required - 1):**
 Image is **Colorful** or **Monochromatic (B&W)**, including **toning**.
@@ -37,12 +37,15 @@ For example, Sepia is considered a form of B&W Photography with different tone.
 The **dominant** (strongest) color in the image.
 
 **3. Depth of Field (DoF) (required - 1):**
-The distance between the nearest and the farthest objects that are in acceptably sharp focus in an image
+The distance between the nearest and the farthest objects that are in acceptably sharp focus in an image.
 Choose **Deep** if the image appears sharp or **Shallow** if the image appears more blurry.
 
 **4. Composition/Technique: (required - 1+)**
-How the elements of a photo are arranged. 
+How the elements of a photo are arranged.
 A composition can me made up of many different elements, or only a few.
 
 **5. Type: (required - 1+)**
 In short, what is captured in the photo (what its main subject is).
+
+
+#### Examples:
