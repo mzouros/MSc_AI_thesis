@@ -20,3 +20,9 @@ Annotation Tool: http://psa-annotator.ddns.net/
 
 ### [API](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation_API.md)
 ### [Annotator](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation_Annotator.md)
+
+## Author
+<img src="https://avatars.githubusercontent.com/u/41365637?v=4" align="left" height="100"/>
+
+[Michael Zouros](https://www.michaelzouros.com/),
+Researcher at [IMSI - Information Management Systems Institute](https://www.athenarc.gr/en/imsi) of the "ATHENA" Research and Innovation Center in Information, Communication and Knowledge Technologies, [DIT - Dpt of Informatics and Telecommunications](https://www.di.uoa.gr/en) of the National and Kapodistrian University of Athens and [MaDgIK - Management of Data Information & Knowledge Group](https://www.madgik.di.uoa.gr/)
