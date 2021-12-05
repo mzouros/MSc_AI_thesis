@@ -14,7 +14,7 @@ Ways to access the API:
 
 #### Examples
 
-[/psa-controller/predict](http://photostyleanalysis.ddns.net/psa-controller/predict) (*given an image, try and predict its main subject*):
+[/psa-controller/predict](http://194.177.192.229:5000//predict) (*given an image, try and predict its main subject*):
 
 * **via Swagger:**
 
