@@ -1,0 +1,66 @@
+<View>
+  <Header value="Photography Style Analysis - Annotation Tool"/>
+  <Image name="image" value="$image" zoom="true" zoomControl="true" maxWidth="100%"/>
+  <Text name="Color-text" value="$image"/>
+  <Choices name="Color" toName="image" required="true">
+    <Choice value="Black and White"/>
+    <Choice value="Colorful"/>
+  </Choices>
+  <Text name="Palette-text" value="$image"/>
+  <Choices name="Palette" toName="image" choice="multiple" required="true">
+    <Choice value="Black"/>
+    <Choice value="Blue"/>
+    <Choice value="Brown"/>
+    <Choice value="Gray"/>
+    <Choice value="Green"/>
+    <Choice value="Human Skin"/>
+    <Choice value="Orange"/>
+    <Choice value="Pink"/>
+    <Choice value="Red"/>
+    <Choice value="Violet"/>
+    <Choice value="White"/>
+    <Choice value="Yellow"/>
+    <Choice value="Other"/>
+  </Choices>
+  <Text name="DoF-text" value="$image"/>
+  <Choices name="DoF" toName="image" required="true">
+    <Choice value="Deep (more in focus)"/>
+    <Choice value="Shallow (less in focus)"/>
+  </Choices>
+  <Text name="Composition-text" value="$image"/>
+  <Choices name="Composition" toName="image" choice="multiple" required="true">
+    <Choice value="Centered"/>
+    <Choice value="Diagonals and Triangles"/>
+    <Choice value="Filling the Frame"/>
+    <Choice value="Frame within Frame"/>
+    <Choice value="Leading Lines"/>
+    <Choice value="Minimal"/>
+    <Choice value="Patterns and Textures"/>
+    <Choice value="Rule of Thirds"/>
+    <Choice value="Symmetrical"/>
+    <Choice value="Undefined"/>
+  </Choices>
+  <Text name="Type-text" value="$image"/>
+  <Choices name="Type" toName="image" choice="multiple" required="true">
+    <Choice value="Aerial"/>
+    <Choice value="Architectural"/>
+    <Choice value="Astro"/>
+    <Choice value="Cityscape"/>
+    <Choice value="Commercial"/>
+    <Choice value="Documentary"/>
+    <Choice value="Event"/>
+    <Choice value="Fashion"/>
+    <Choice value="Food"/>
+    <Choice value="Landscape"/>
+    <Choice value="Macro"/>
+    <Choice value="Night"/>
+    <Choice value="Pet"/>
+    <Choice value="Portrait"/>
+    <Choice value="Sports"/>
+    <Choice value="Street"/>
+    <Choice value="Underwater"/>
+    <Choice value="Wedding"/>
+    <Choice value="Wildlife"/>
+    <Choice value="Other"/>
+  </Choices>
+</View>
