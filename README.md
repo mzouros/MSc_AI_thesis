@@ -8,7 +8,15 @@ This repo contains work for my Thesis at the MSc Program of AI 2020-2022, organi
 
 Supervisor: Mr. Theodoros Giannakopoulos - [tygiannak](https://github.com/tyiannak)
 
-## Server Info:
+## Main Server Info:
+
+Machine: Ubuntu 20.04
+
+Domain: http://194.177.192.229:5000/
+
+Annotation Tool: http://194.177.192.229:8081/
+
+## Backup Server Info:
 
 Machine: Raspberry Pi 4
 
