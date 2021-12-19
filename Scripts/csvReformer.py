@@ -4,10 +4,12 @@ import csv
 import numpy as np
 import pandas as pd
 
-filename = '../PhotographyStyleAnalysis/input/movie-classifier/Multi_Label_dataset/Tasks/label_studio_200_images.csv'
+filename = '../input/style-classifier/Multi_Label_dataset/Tasks/label_studio_200_images.csv'
 tempfile = NamedTemporaryFile(mode='w', delete=False)
 fields = ['image', 'id', 'Color', 'Palette', 'DoF', 'Composition', 'Type', 'annotator', 'annotation_id', 'created_at', 'updated_at', 'lead_time']
 
+dataColor = np.array([['image', 'Color']])
+dataDof = np.array([['image', 'DoF']])
 dataPal = np.array([['image', 'Palette']])
 dataComp = np.array([['image', 'Composition']])
 dataType = np.array([['image', 'Type']])
@@ -48,20 +50,10 @@ with open(filename, 'r') as read_obj, tempfile:
             row = {'image': row['image'], 'id': row['id'], 'Color': row['Color'], 'Palette': row['Palette'], 'DoF': row['DoF'], 'Composition': row['Composition'],
                    'Type': row['Type'], 'annotator': row['annotator'], 'annotation_id': row['annotation_id'], 'created_at': row['created_at'],
                    'updated_at': row['updated_at'], 'lead_time': row['lead_time']}
-        # Color binary classification task
-        color = row['Color']
-        if color == "Colorful":
-            row['Color'] = 1
-        else:
-            row['Color'] = 0
-        # DoF binary classification task
-        dof = row['DoF']
-        if dof == "Deep":
-            row['DoF'] = 1
-        else:
-            row['DoF'] = 0
 
         # keep info to create new .csv files for the multi-label tasks
+        dataColor = np.append(dataColor, np.array([[row['image'], row['Color']]]), axis=0)
+        dataDof = np.append(dataDof, np.array([[row['image'], row['DoF']]]), axis=0)
         dataPal = np.append(dataPal, np.array([[row['image'], row['Palette']]]), axis=0)
         dataComp = np.append(dataComp, np.array([[row['image'], row['Composition']]]), axis=0)
         dataType = np.append(dataType, np.array([[row['image'], row['Type']]]), axis=0)
@@ -77,22 +69,22 @@ def wrap_eval(x):
     except:
         return [x]
 
-dataFrames = [dataPal, dataComp, dataType]
-csvNames = ['palette.csv', 'composition.csv', 'type.csv']
-colOfInterest = ['Palette', 'Composition', 'Type']
-for j in range(3):
+dataFrames = [dataColor, dataDof, dataPal, dataComp, dataType]
+csvNames = ['color.csv', 'dof.csv', 'palette.csv', 'composition.csv', 'type.csv']
+colOfInterest = ['Color', 'DoF', 'Palette', 'Composition', 'Type']
+for j in range(5):
     df = pd.DataFrame(dataFrames[j])
     df.to_csv(csvNames[j], header=None, index=False)
     df = pd.read_csv(csvNames[j])
     df[colOfInterest[j]] = df[colOfInterest[j]].apply(wrap_eval)
     for i, row in df.iterrows():
-        for colour in row[colOfInterest[j]]:
+        for col in row[colOfInterest[j]]:
             try:
-                df[colour]             # (1) in the steps above.
+                df[col]             # (1) in the steps above.
             except:
-                df[colour] = 0         # (2)
+                df[col] = 0         # (2)
             finally:
-                df.loc[i, colour] = 1  # (3)
+                df.loc[i, col] = 1  # (3)
 
     fixed = pd.DataFrame(df)
     fixed.to_csv(csvNames[j], index=False)
