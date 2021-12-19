@@ -26,5 +26,5 @@ Annotation Tool: http://psa-annotator.ddns.net/
 
 ## Documentation
 
-### [API](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation_API.md)
-### [Annotator](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation_Annotator.md)
+### [API](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation/Documentation_API.md)
+### [Annotator](https://github.com/mzouros/MSc_AI_thesis/blob/main/Documentation/Documentation_Annotator.md)
