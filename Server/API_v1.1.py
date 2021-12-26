@@ -49,7 +49,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 ### FLASK CONFIGURATION ###
 flask_app = Flask(__name__)
-flask_app.secret_key = '*********'
+flask_app.secret_key = 'w3l0v3ph0t0gr4phy'
 
 authorizations = { # AAI
     'apikey': {
@@ -129,7 +129,7 @@ def token_required(f):
             token = request.headers['X-API-KEY']
         if not token:
             return {'Message' : 'Token is missing'}, 403
-        if token != '********':
+        if token != 'w3l0v3ph0t0gr4phy':
             return {'Message:' : 'Token is invalid'}, 401
         print('TOKEN: {}'.format(token))
         return f(*args, **kwargs)
@@ -150,12 +150,13 @@ def get_color_prediction(image_bytes):
     outputs = modelColor(transform_image(image_bytes=image_bytes))
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
-    sorted_indices = np.argsort(outputs[0])
-    best = sorted_indices[-1:]
-    string_predicted = ' '
-    for i in range(len(best)):
-        string_predicted += f"{classes[best[i]]}  "
-    return json.dumps({"Predicted": string_predicted})
+    proba, indices = torch.sort(outputs, descending=True)
+    best_proba = proba[0][:1]
+    best_indices = indices[0][:1]
+    predicted = ''
+    for i in range(len(best_indices)):
+        predicted += f'{classes[best_indices[i]]} -> {best_proba[i]}' # workaround to open fix -> https://github.com/pytorch/pytorch/issues/65908
+    return predicted
 
 def get_dof_prediction(image_bytes):
     train = pd.read_csv('/home/mzouros/Desktop/flask_dir/psa/Models/dof.csv')
@@ -163,12 +164,13 @@ def get_dof_prediction(image_bytes):
     outputs = modelDoF(transform_image(image_bytes=image_bytes))
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
-    sorted_indices = np.argsort(outputs[0])
-    best = sorted_indices[-1:]
-    string_predicted = ' '
-    for i in range(len(best)):
-        string_predicted += f"{classes[best[i]]}  "
-    return json.dumps({"Predicted": string_predicted})
+    proba, indices = torch.sort(outputs, descending=True)
+    best_proba = proba[0][:1]
+    best_indices = indices[0][:1]
+    predicted = ''
+    for i in range(len(best_indices)):
+        predicted += f'{classes[best_indices[i]]} -> {best_proba[i]}' # workaround to open fix -> https://github.com/pytorch/pytorch/issues/65908
+    return predicted
 
 def get_palette_prediction(image_bytes):
     train = pd.read_csv('/home/mzouros/Desktop/flask_dir/psa/Models/palette.csv')
@@ -176,12 +178,13 @@ def get_palette_prediction(image_bytes):
     outputs = modelPalette(transform_image(image_bytes=image_bytes))
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
-    sorted_indices = np.argsort(outputs[0])
-    best = sorted_indices[-3:]
-    string_predicted = ' '
-    for i in range(len(best)):
-        string_predicted += f"{classes[best[i]]}  "
-    return json.dumps({"Predicted": string_predicted})
+    proba, indices = torch.sort(outputs, descending=True)
+    best_proba = proba[0][:3]
+    best_indices = indices[0][:3]
+    predicted = []
+    for i in range(len(best_indices)):
+       predicted.append(f'{classes[best_indices[i]]} -> {best_proba[i]}') # workaround to open fix -> https://github.com/pytorch/pytorch/issues/65908
+    return predicted
 
 def get_composition_prediction(image_bytes):
     train = pd.read_csv('/home/mzouros/Desktop/flask_dir/psa/Models/composition.csv')
@@ -189,12 +192,13 @@ def get_composition_prediction(image_bytes):
     outputs = modelComposition(transform_image(image_bytes=image_bytes))
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
-    sorted_indices = np.argsort(outputs[0])
-    best = sorted_indices[-3:]
-    string_predicted = ' '
-    for i in range(len(best)):
-        string_predicted += f"{classes[best[i]]}  "
-    return json.dumps({"Predicted": string_predicted})
+    proba, indices = torch.sort(outputs, descending=True)
+    best_proba = proba[0][:3]
+    best_indices = indices[0][:3]
+    predicted = []
+    for i in range(len(best_indices)):
+       predicted.append(f'{classes[best_indices[i]]} -> {best_proba[i]}') # workaround to open fix -> https://github.com/pytorch/pytorch/issues/65908
+    return predicted
 
 def get_type_prediction(image_bytes):
     train = pd.read_csv('/home/mzouros/Desktop/flask_dir/psa/Models/type.csv')
@@ -202,13 +206,13 @@ def get_type_prediction(image_bytes):
     outputs = modelType(transform_image(image_bytes=image_bytes))
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
-    sorted_indices = np.argsort(outputs[0])
-    best = sorted_indices[-3:]
-    string_predicted = ' '
-    for i in range(len(best)):
-        string_predicted += f"{classes[best[i]]}  "
-    print(f"Predicted: {string_predicted}")  
-    return json.dumps({"Predicted": string_predicted})
+    proba, indices = torch.sort(outputs, descending=True)
+    best_proba = proba[0][:3]
+    best_indices = indices[0][:3]
+    predicted = []
+    for i in range(len(best_indices)):
+       predicted.append(f'{classes[best_indices[i]]} -> {best_proba[i]}') # workaround to open fix -> https://github.com/pytorch/pytorch/issues/65908
+    return predicted
 
 ### METHODS ###
 
@@ -238,7 +242,7 @@ class UploadImageColor(Resource):
                 filename = secure_filename(file.filename) #check secure_filename
                 img_bytes = file.read()
                 class_id = get_color_prediction(image_bytes=img_bytes)
-                return {'class_id': class_id}
+                return {'Predicted': class_id}
 
 @api.route('/predict/depth')
 @api.expect(upload_parser)
@@ -257,7 +261,7 @@ class UploadImageDoF(Resource):
                 filename = secure_filename(file.filename) #check secure_filename
                 img_bytes = file.read()
                 class_id = get_dof_prediction(image_bytes=img_bytes)
-                return {'class_id': class_id}
+                return {'Predicted': class_id}
 
 @api.route('/predict/palette')
 @api.expect(upload_parser)
@@ -276,7 +280,7 @@ class UploadImagePalette(Resource):
                 filename = secure_filename(file.filename) #check secure_filename
                 img_bytes = file.read()
                 class_id = get_palette_prediction(image_bytes=img_bytes)
-                return {'class_id': class_id}
+                return {'Top 3 Predictions': {'1st': class_id[0], '2nd': class_id[1], '3rd': class_id[2]}}
 
 @api.route('/predict/composition')
 @api.expect(upload_parser)
@@ -295,7 +299,7 @@ class UploadImageComposition(Resource):
                 filename = secure_filename(file.filename) #check secure_filename
                 img_bytes = file.read()
                 class_id = get_composition_prediction(image_bytes=img_bytes)
-                return {'class_id': class_id}
+                return {'Top 3 Predictions': {'1st': class_id[0], '2nd': class_id[1], '3rd': class_id[2]}}
 
 @api.route('/predict/type')
 @api.expect(upload_parser)
@@ -314,7 +318,7 @@ class UploadImageType(Resource):
                 filename = secure_filename(file.filename) #check secure_filename
                 img_bytes = file.read()
                 class_id = get_type_prediction(image_bytes=img_bytes)
-                return {'class_id': class_id}
+                return {'Top 3 Predictions': {'1st': class_id[0], '2nd': class_id[1], '3rd': class_id[2]}}
 ### CONTROLLERS ###   
 
 ### RUN ### 
