@@ -49,7 +49,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 ### FLASK CONFIGURATION ###
 flask_app = Flask(__name__)
-flask_app.secret_key = 'w3l0v3ph0t0gr4phy'
+flask_app.secret_key = '********'
 
 authorizations = { # AAI
     'apikey': {
@@ -129,7 +129,7 @@ def token_required(f):
             token = request.headers['X-API-KEY']
         if not token:
             return {'Message' : 'Token is missing'}, 403
-        if token != 'w3l0v3ph0t0gr4phy':
+        if token != '********':
             return {'Message:' : 'Token is invalid'}, 401
         print('TOKEN: {}'.format(token))
         return f(*args, **kwargs)
